@@ -28,3 +28,9 @@ Route::middleware([
 ])->post('/complaints', [ComplaintController::class, 'create']);
 
 require __DIR__.'/auth.php';
+
+Route::get('mailable', function () {
+    $complaint = \App\Models\Complaint::find(1);
+
+    return new \App\Mail\ComplaintFiled($complaint);
+});

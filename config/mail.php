@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,8 +84,13 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'complaints@pendomanagement.com'),
+        'name' => env('MAIL_FROM_NAME', 'Pendo Complaints Tracker'),
+    ],
+
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'complaints@pendomanagement.com'),
+        'name' => env('MAIL_TO_NAME', 'Pendo Complaints Tracker'),
     ],
 
     /*
