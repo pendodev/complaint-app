@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -55,8 +56,8 @@ class Complaint extends Model
         'type',
         'person',
         'job_title',
-        'complainant',
-        'complaint',
+        'author',
+        'message',
         'user_id',
     ];
 
@@ -66,8 +67,7 @@ class Complaint extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'user',
     ];
 
     /**
@@ -78,6 +78,16 @@ class Complaint extends Model
     protected $casts = [
     ];
 
+    protected $dates = [
+        'date',
+        'created_at',
+        'updated_at',
+    ];
+
+    protected $appends = [
+        'submitted_by',
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -86,24 +96,67 @@ class Complaint extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getJobTitleAttribute($value) {
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = Carbon::createFromTimestamp(strtotime($value));
+    }
+
+    public function getJobTitleAttribute($value)
+    {
         if (strlen($value) <= 3) {
             return strtoupper($value);
         }
         return ucfirst($value);
     }
 
-    public function getTypeAttribute($value) {
+    public function getTypeAttribute($value)
+    {
         if (strlen($value) <= 2) {
             return strtoupper($value);
         }
         return ucfirst($value);
     }
 
-    public function getPersonAttribute($value) {
+    public function getPersonAttribute($value)
+    {
         if (strlen($value) <= 3) {
             return strtoupper($value);
         }
         return ucfirst($value);
+    }
+
+    public function getSubmittedByAttribute()
+    {
+        return $this->user->name;
+    }
+
+    public static function getTypes()
+    {
+        $types = [];
+        $self = new static;
+        foreach (self::TYPES as $type) {
+            $types[$type] = $self->getTypeAttribute($type);
+        }
+        return $types;
+    }
+
+    public static function getJobs()
+    {
+        $jobs = [];
+        $self = new static;
+        foreach (self::JOBS as $job) {
+            $jobs[$job] = $self->getJobTitleAttribute($job);
+        }
+        return $jobs;
+    }
+
+    public static function getPersons()
+    {
+        $persons = [];
+        $self = new static;
+        foreach (self::PERSONS as $person) {
+            $persons[$person] = $self->getPersonAttribute($person);
+        }
+        return $persons;
     }
 }

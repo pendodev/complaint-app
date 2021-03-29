@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="flex items-center justify-center h-screen">
-    <div class="app" style="width: 100%; max-width: 90%;">
+    <div class="app" style="width: 100%; max-width: 95%;">
         <div class=" flex flex-col flex-1">
             {{ $slot }}
         </div>

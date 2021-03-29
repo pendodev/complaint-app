@@ -105,4 +105,10 @@ a {
         min-width: 60px;
     }
 }
+.bg-primary {
+    background-color: #00AD69;
+}
+[x-cloak] {
+    display: none;
+}
 @tailwind utilities;

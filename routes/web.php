@@ -19,10 +19,12 @@ Route::middleware(['auth'])->get('/', function () {
     return view('app');
 });
 
-Route::middleware(['auth'])->get('/complaints', [ComplaintController::class, 'index']);
+Route::middleware([
+    'auth'
+])->get('/complaints', [ComplaintController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware([
+    'auth'
+])->post('/complaints', [ComplaintController::class, 'create']);
 
 require __DIR__.'/auth.php';

@@ -26,12 +26,14 @@ class ComplaintController extends Controller
             'type'        => ['required', Rule::in(Complaint::TYPES)],
             'person'      => ['required', Rule::in(Complaint::PERSONS)],
             'job_title'   => ['required', Rule::in(Complaint::JOBS)],
-            'complainant' => ['required', 'min:1'],
-            'complaint'   => ['required', 'min:1'],
+            'author'      => ['required', 'min:1'],
+            'message'     => ['required', 'min:1'],
         ]);
 
-        return Complaint::create(array_merge($request->all(), [
+        $complaint = Complaint::create(array_merge($request->all(), [
             'user_id' => Auth::user()->getKey()
         ]));
+
+        return redirect()->to('/');
     }
 }
