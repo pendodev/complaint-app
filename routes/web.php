@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::middleware(['auth'])->get('/', function () {
+Route::middleware(['auth', 'verified'])->get('/', function () {
     return view('app');
 });
 

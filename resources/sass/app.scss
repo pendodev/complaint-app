@@ -20,7 +20,7 @@ body {
 .auth-container {
     width: 100%;
     max-width: 968px;
-    height: 592px;
+    min-height: 592px;
     margin: 0 auto;
     box-shadow: 0 2.76px 2.21px rgba(0, 0, 0, 0.0365),
                 0 6.65px 5.32px rgba(0, 0, 0, 0.0525),
