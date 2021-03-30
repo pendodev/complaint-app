@@ -13,16 +13,22 @@
                         </div>
                     @endif
 
-                    <div class="mt-4 flex-1 flex flex-col items-center justify-between">
-                        <form method="POST" action="{{ route('verification.send') }}">
+                    <div class="mt-4 flex-1 flex flex-col">
+                        <form method="POST" class="flex flex-col" action="{{ route('verification.send') }}">
                             @csrf
 
-                            <div class="mt-14">
+                            <div class="mt-14 flex flex-col">
                                 <button type="submit" class="block flex-1 bg-green-500 uppercase rounded-xl h-10 px-5 text-white font-bold text-lg">{{ __('Resend Verification Email') }}</button>
                             </div>
                         </form>
 
-                        <a href="{{ route('logout') }}">Logout</a>
+                        <form method="POST" class="flex flex-col" action="{{ route('logout') }}">
+                            @csrf
+
+                            <div class="mt-8 flex flex-col">
+                                <button type="submit" class="block flex-1 bg-gray-500 uppercase rounded-xl h-10 px-5 text-white font-bold text-lg">Logout</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
