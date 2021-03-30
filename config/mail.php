@@ -88,9 +88,9 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Pendo Complaints Tracker'),
     ],
 
-    'to' => [
-        'address' => env('MAIL_TO_ADDRESS', 'complaints@pendomanagement.com'),
-        'name' => env('MAIL_TO_NAME', 'Pendo Complaints Tracker'),
+    'complaints' => [
+        'address' => env('COMPLAINTS_ADDRESS', 'complaints@pendomanagement.com'),
+        'name' => env('COMPLAINTS_NAME', 'Pendo Complaints Tracker'),
     ],
 
     /*

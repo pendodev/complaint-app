@@ -37,8 +37,8 @@ class ComplaintController extends Controller
         ]));
 
         $to = (object) [
-            'email' => config('mail.to.address'),
-            'name' => config('mail.to.name')
+            'email' => config('mail.complaints.address'),
+            'name' => config('mail.complaints.name')
         ];
 
 
