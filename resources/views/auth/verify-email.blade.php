@@ -35,7 +35,7 @@
             <div class="flex-1 auth__info-panel items-center flex p-12 hidden md:flex">
                 <div style="margin-top: -100px;">
                     <h1 class="text-3xl font-bold">Thanks for signing up!</h1>
-                    <p class="text-lg">Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.</p>
+                    <p class="text-lg">Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.</p>
                 </div>
             </div>
         </div>
